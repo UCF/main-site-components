@@ -1,0 +1,8 @@
+{
+    "name": "ucf/main-site-components",
+    "description": "Provides a number of components used on ucf.edu, such as the interactive flip card, the light trail box and the bracket classes.",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
