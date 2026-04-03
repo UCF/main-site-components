@@ -10,7 +10,7 @@ GitHub Plugin URI: UCF/main-site-components
 
 namespace MSC;
 
-if ( ! defined( '\WPINC' ) ) {
+if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
