@@ -7,14 +7,15 @@
 namespace MSC\Config;
 
 function enqueue_assets() {
-	$plugin_info = get_plugin_data( MSC__PLUGIN_FILE, false, false );
+	$plugin_data = get_file_data( MSC__PLUGIN_FILE, array( 'Version' => 'Version' ) );
+	$version = $plugin_data['Version'];
 
 	// Enqueue the stylesheet
 	wp_enqueue_style(
 		'msc_styles',
 		plugins_url( 'static/css/style.min.css', MSC__PLUGIN_FILE ),
 		false,
-		false,
+		$version,
 		'all'
 	);
 
@@ -23,7 +24,7 @@ function enqueue_assets() {
 		'msc_scripts',
 		plugins_url( 'static/js/script.min.js', MSC__PLUGIN_FILE ),
 		array( 'jquery' ),
-		$plugin_info['Version'],
+		$version,
 		array(
 			'strategy'  => 'async',
 			'in_footer' => true
