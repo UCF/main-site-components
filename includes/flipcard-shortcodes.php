@@ -37,7 +37,7 @@ function sc_flip_card( $attr, $content='' ) {
 
 ?>
 	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
-		<div class="<?php echo implode( ' ',  $card_classes ); ?>"<?php echo ' style="' . $attr['card_style'] . '"' ? ! empty( $attr['card_style'] ) : '';?>>
+		<div class="<?php echo implode( ' ',  $card_classes ); ?>"<?php echo ! empty( $attr['card_style'] ) ? ' style="' . $attr['card_style'] . '"' : '';?>>
 			<?php echo do_shortcode( $content ); ?>
 		</div>
 	</div>
@@ -72,7 +72,7 @@ function flip_card_side( $attr, $content='' ) {
 
 	ob_start();
 ?>
-	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
+	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo ! empty( $attr['style'] ) ? ' style="' . $attr['style'] . '"' : '';?>>
 		<?php echo do_shortcode( $content ); ?>
 	</div>
 <?php
