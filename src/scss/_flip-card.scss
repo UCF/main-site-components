@@ -12,7 +12,7 @@
 }
 
 .flip-card-inner {
-  display: grid; /* here */
+  display: grid !important; /* here */
   max-width: 500px;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -20,4 +20,20 @@
   @media (min-width: 768px) {
     aspect-ratio: 1;
   }
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card.tapped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  grid-area: 1/1; /*and here */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
 }

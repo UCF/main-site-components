@@ -2,3 +2,5 @@
 package.json
 .eslintrc.json
 gulp-config.template.json
+
+static/

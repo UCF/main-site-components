@@ -4,7 +4,7 @@
  * implementing flipcards
  */
 
-namespace MSC_FLIP_CARD_SHORTCODES;
+namespace MSC\Flip_Card\Shortcodes;
 
 /**
  * The wrapper flip card which will nest the inner
@@ -28,16 +28,16 @@ function sc_flip_card( $attr, $content='' ) {
 	), $attr );
 
 	$classes = array( 'flip-card' );
-	$classes = array_merge( $classes, $attr['class'] );
+	$classes = array_merge( $classes, explode( ' ', $attr['class'] ) );
 
 	$card_classes = array( 'card flip-card-inner' );
-	$card_classes = array_merge( $card_classes, $attr['card_classes'] );
+	$card_classes = array_merge( $card_classes, explode( ' ', $attr['card_class'] ) );
 
 	ob_start();
 
 ?>
-	<div class="<?php echo $classes; ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
-		<div class="<?php echo $card_classes; ?>"<?php echo ' style="' . $attr['card_style'] . '"' ? ! empty( $attr['card_style'] ) : '';?>>
+	<div class="<?php echo implode( $classes ); ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
+		<div class="<?php echo implode( $card_classes ); ?>"<?php echo ' style="' . $attr['card_style'] . '"' ? ! empty( $attr['card_style'] ) : '';?>>
 			<?php echo do_shortcode( $content ); ?>
 		</div>
 	</div>
@@ -62,8 +62,21 @@ function sc_flip_card( $attr, $content='' ) {
  */
 function flip_card_side( $attr, $content='' ) {
 	$attr = shortcode_atts( array(
-		'side' => ''
+		'side' => 'front',
+		'class' => '',
+		'style' => ''
 	), $attr );
+
+	$classes = array( "card-{$attr['side']}" );
+	$classes = array_merge( $classes, explode( ' ', $attr['class'] ) );
+
+	ob_start();
+?>
+	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
+		<?php echo do_shortcode( $content ); ?>
+	</div>
+<?php
+	return ob_get_clean();
 }
 
 /**
@@ -102,4 +115,10 @@ function sc_flip_card_back( $attr, $content='' ) {
 	$attr['side'] = 'back';
 
 	return flip_card_side( $attr, $content );
+}
+
+function register_shortcodes() {
+	add_shortcode( 'flip-card', __NAMESPACE__ . '\sc_flip_card' );
+	add_shortcode( 'flip-card-front', __NAMESPACE__ . '\sc_flip_card_front' );
+	add_shortcode( 'flip-card-back', __NAMESPACE__ . '\sc_flip_card_back' );
 }
