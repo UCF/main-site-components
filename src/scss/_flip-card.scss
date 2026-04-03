@@ -1,0 +1,23 @@
+.flip-card {
+  overflow: hidden;
+  perspective: 1000px;
+
+  p {
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: .875rem;
+    }
+  }
+}
+
+.flip-card-inner {
+  display: grid; /* here */
+  max-width: 500px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+
+  @media (min-width: 768px) {
+    aspect-ratio: 1;
+  }
+}
