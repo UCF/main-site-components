@@ -36,8 +36,8 @@ function sc_flip_card( $attr, $content='' ) {
 	ob_start();
 
 ?>
-	<div class="<?php echo implode( $classes ); ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
-		<div class="<?php echo implode( $card_classes ); ?>"<?php echo ' style="' . $attr['card_style'] . '"' ? ! empty( $attr['card_style'] ) : '';?>>
+	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo ' style="' . $attr['style'] . '"' ? ! empty( $attr['style'] ) : '';?>>
+		<div class="<?php echo implode( ' ',  $card_classes ); ?>"<?php echo ' style="' . $attr['card_style'] . '"' ? ! empty( $attr['card_style'] ) : '';?>>
 			<?php echo do_shortcode( $content ); ?>
 		</div>
 	</div>
