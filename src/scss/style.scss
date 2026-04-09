@@ -1,7 +1,7 @@
 //
 // Plugin variables and variable overrides
 //
-@import 'variables';
+@use 'variables';
 
 
 //
@@ -17,4 +17,4 @@
 //
 
 // Import your plugin's custom styles here
-@import 'flip-card';
+@use 'flip-card';
