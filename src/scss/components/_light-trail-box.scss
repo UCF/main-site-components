@@ -1,0 +1,28 @@
+@use '../variables';
+
+.light-trail-box {
+  border-top: 5px solid transparent;
+  border-left: 5px solid variables.$brand-primary;
+  border-bottom: 5px solid variables.$brand-primary;
+  padding-left: 2rem;
+  margin-top: 1.75rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    width: 2.5rem;
+    height: 5px;
+    background-color: variables.$brand-primary;
+  }
+}
+
+.light-trail-box-heading {
+  margin-top: -1.75rem;
+  padding: .25rem 0 .25rem 1rem;
+}
+
+.light-trail-box-body {
+  padding: .25rem 0 .25rem 1rem;
+}

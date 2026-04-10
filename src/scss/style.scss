@@ -1,7 +1,6 @@
 //
 // Plugin variables and variable overrides
 //
-@use 'variables';
 
 
 //
@@ -17,4 +16,5 @@
 //
 
 // Import your plugin's custom styles here
-@use 'flip-card';
+@use 'components/flip-card';
+@use 'components/light-trail-box';

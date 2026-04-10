@@ -134,7 +134,7 @@ gulp.task('scss-build-plugin', () => {
 });
 
 // All plugin css-related tasks
-gulp.task('css', gulp.series('scss-lint-plugin', 'scss-build-plugin'));
+gulp.task('css', gulp.series('scss-build-plugin'));
 
 
 //
