@@ -20,9 +20,11 @@ define( 'MSC__STATIC_URL', MSC__PLUGIN_URL . '/static' );
 define( 'MSC__PLUGIN_FILE', __FILE__ );
 
 require_once MSC__PLUGIN_DIR . 'includes/config.php';
+require_once MSC__PLUGIN_DIR . 'includes/brackets-shortcodes.php';
 require_once MSC__PLUGIN_DIR . 'includes/flipcard-shortcodes.php';
 
 add_action( 'plugins_loaded', function() {
 	add_action( 'wp_enqueue_scripts', 'MSC\Config\enqueue_assets', 10, 0 );
 	add_action( 'init', 'MSC\Flip_Card\Shortcodes\register_shortcodes', 10, 0 );
+	add_action( 'init', 'MSC\Brackets\Shortcodes\register_shortcodes', 10, 0 );
 } );
