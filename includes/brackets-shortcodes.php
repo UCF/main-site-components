@@ -21,12 +21,12 @@ function sc_brackets( $attr, $content='' ) {
 	);
 
 	$style = ! empty( $attr['style'] ) ?
-		" style=\"{$attr['style']}\"" :
+		' style="' . safecss_filter_attr( $attr['style'] ) . '"' :
 		"";
 
 	ob_start();
 ?>
-	<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo safecss_filter_attr( $style ); ?>>
+	<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo $style; ?>>
 		<?php echo do_shortcode( $content ); ?>
 	</div>
 <?php
