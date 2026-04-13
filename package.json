@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",

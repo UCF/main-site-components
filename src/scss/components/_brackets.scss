@@ -3,7 +3,7 @@
 @use 'sass:map';
 @use 'sass:list';
 @use 'sass:math';
-@use '../functions/clip';
+@use '../functions/clip' as *;
 
 $layouts: (
   '': (true, false, true, false),

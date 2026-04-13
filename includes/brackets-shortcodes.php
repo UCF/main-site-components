@@ -26,7 +26,7 @@ function sc_brackets( $attr, $content='' ) {
 
 	ob_start();
 ?>
-	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo $style; ?>>
+	<div class="<?php echo implode( ' ', $classes ); ?>"<?php echo safecss_filter_attr( $style ); ?>>
 		<?php echo do_shortcode( $content ); ?>
 	</div>
 <?php
