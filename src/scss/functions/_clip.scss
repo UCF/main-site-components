@@ -1,0 +1,65 @@
+@use 'sass:list';
+
+@function create-bracket-clip($thickness, $size, $tl: false, $tr: false, $br: false, $bl: false) {
+  $thickness: $thickness + 1px;
+
+  $coords: ();
+
+  // Top Left Corner
+  $coords: list.append($coords, '#{$thickness} #{$size}', 'comma');
+
+  @if ($tl) {
+    $coords: list.append($coords, '0 #{$size}', 'comma');
+    $coords: list.append($coords, '0 0', 'comma');
+    $coords: list.append($coords, '#{$size} 0' , 'comma');
+  } @else {
+    $coords: list.append($coords, '#{$thickness} #{$thickness}', 'comma');
+  }
+
+  // End Top Left Corner
+  $coords: list.append($coords, '#{$size} #{$thickness}', 'comma');
+
+  // Top Right Corner
+  $coords: list.append($coords, '#{calc(100% - $size)} #{$thickness}', 'comma');
+
+  @if ($tr) {
+    $coords: list.append($coords, '#{calc(100% - $size)} 0', 'comma');
+    $coords: list.append($coords, '100% 0', 'comma');
+    $coords: list.append($coords, '100% #{$size}' , 'comma');
+  } @else {
+    $coords: list.append($coords, '#{calc(100% - $thickness)} #{$thickness}', 'comma');
+  }
+
+  // End Top Right Corner
+  $coords: list.append($coords, '#{calc(100% - $thickness)} #{$size}', 'comma');
+
+  // Bottom Right Corner
+  $coords: list.append($coords, '#{calc(100% - $thickness)} #{calc(100% - $size)}', 'comma');
+
+  @if ($br) {
+    $coords: list.append($coords, '100% #{calc(100% - $size)}', 'comma');
+    $coords: list.append($coords, '100% 100%', 'comma');
+    $coords: list.append($coords, '#{calc(100% - $size)} 100%', 'comma');
+  } @else {
+    $coords: list.append($coords, '#{calc(100% - $thickness)} #{calc(100% - $thickness)}', 'comma');
+  }
+
+  // End Bottom Right Corner
+  $coords: list.append($coords, '#{calc(100% - $size)} #{calc(100% - $thickness)}', 'comma');
+
+  // Bottom Left Corner
+  $coords: list.append($coords, '#{$size} #{calc(100% - $thickness)}', 'comma');
+
+  @if ($bl) {
+    $coords: list.append($coords, '#{$size} 100%', 'comma');
+    $coords: list.append($coords, '0 100%', 'comma');
+    $coords: list.append($coords, '0 #{calc(100% - $size)}', 'comma');
+  } @else {
+    $coords: list.append($coords, '#{$thickness} #{calc(100% - $thickness)}', 'comma');
+  }
+
+  // End Bottom Left Corner
+  $coords: list.append($coords, '#{$thickness} #{calc(100% - $size)}', 'comma');
+
+  @return polygon(#{$coords});
+}

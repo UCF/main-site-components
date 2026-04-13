@@ -1,0 +1,52 @@
+extends:
+  - stylelint-config-recommended-scss
+
+rules:
+  # --- Errors (fail the build) ---
+
+  # no-invalid-hex: 1
+  color-no-invalid-hex: true
+
+  # no-empty-rulesets: 1
+  block-no-empty: true
+
+  # no-duplicate-properties: 1
+  declaration-block-no-duplicate-properties: true
+
+  # no-mergeable-selectors: 1
+  no-duplicate-selectors: true
+
+  # --- Warnings (report but don't fail) ---
+
+  # no-color-keywords: 1
+  color-named:
+    - never
+    - severity: warning
+
+  # no-important: 1
+  declaration-no-important:
+    - true
+    - severity: warning
+
+  # nesting-depth: max-depth: 3
+  max-nesting-depth:
+    - 3
+    - severity: warning
+
+  # no-ids: 1
+  selector-max-id:
+    - 0
+    - severity: warning
+
+  # no-vendor-prefixes: 1
+  property-no-vendor-prefix:
+    - true
+    - severity: warning
+
+  # --- SCSS-specific ---
+
+  # placeholder-in-extend: 1
+  scss/at-extend-no-missing-placeholder: true
+
+  # Disable: intentional // divider lines (e.g. "//") are flagged as empty
+  scss/comment-no-empty: null
