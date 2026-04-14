@@ -31,3 +31,10 @@ function enqueue_assets() {
 		)
 	);
 }
+
+function add_docs_link( $links ) {
+    $docs_link = '<a href="https://github.com/UCF/main-site-components/wiki" target="_blank">' . __('Documentation', 'textdomain') . '</a>';
+    // Add the link to the beginning of the links array
+    array_unshift( $links, $docs_link );
+    return $links;
+}
