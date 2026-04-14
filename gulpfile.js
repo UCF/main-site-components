@@ -9,7 +9,7 @@ const isFixed      = require('gulp-eslint-if-fixed');
 const babel        = require('gulp-babel');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass')(require('sass'));
-const sassLint     = require('gulp-sass-lint');
+const stylelint    = require('stylelint');
 const uglify       = require('gulp-uglify');
 const readme       = require('gulp-readme-to-markdown');
 const merge        = require('merge');
@@ -42,11 +42,19 @@ if (fs.existsSync('./gulp-config.json')) {
 //
 
 // Base SCSS linting function
-function lintSCSS(src) {
-  return gulp.src(src)
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError());
+async function lintSCSS(src) {
+  const result = await stylelint.lint({
+    files: src,
+    formatter: 'verbose'
+  });
+
+  if (result.output) {
+    process.stdout.write(result.output);
+  }
+
+  if (result.errored) {
+    throw new Error('Stylelint found linting errors.');
+  }
 }
 
 // Base SCSS compile function

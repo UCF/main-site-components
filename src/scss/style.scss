@@ -17,4 +17,5 @@
 //
 
 // Import your plugin's custom styles here
-@use 'flip-card';
+@use 'components/brackets' as *;
+@use 'components/flip-card' as *;
