@@ -32,9 +32,19 @@ function enqueue_assets() {
 	);
 }
 
-function add_docs_link( $links ) {
-    $docs_link = '<a href="https://github.com/UCF/main-site-components/wiki" target="_blank">' . __('Documentation', 'textdomain') . '</a>';
-    // Add the link to the beginning of the links array
-    array_unshift( $links, $docs_link );
+/**
+ * Add a documentation link to the plugin's action links
+ *
+ * @param array  $links The existing action links.
+ * @param string $file  The plugin file.
+ * @return array Modified action links.
+ */
+function add_plugin_documentation_link( $links, $file ) {
+    if ( strpos( $file, plugin_basename( MSC__PLUGIN_FILE ) ) !== false ) {
+        $new_links = array(
+            'docs' => '<a href="https://github.com/UCF/main-site-components/wiki" target="_blank" rel="noopener noreferrer">Documentation</a>',
+        );
+        $links = array_merge( $links, $new_links );
+    }
     return $links;
 }

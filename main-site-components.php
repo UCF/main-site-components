@@ -29,5 +29,5 @@ add_action( 'plugins_loaded', function() {
 	add_action( 'init', 'MSC\Brackets\Shortcodes\register_shortcodes', 10, 0 );
 
 	// Add the filter using your plugin's base name
-	add_filter( 'plugin_action_links_' . MSC__PLUGIN_FILE, 'MSC\Config\add_docs_link', 10, 1 );
+	add_filter( 'plugin_row_meta', 'MSC\Config\add_plugin_documentation_link', 10, 2 );
 } );
